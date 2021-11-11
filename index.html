@@ -27,26 +27,25 @@
     document.getElementById('mod').addEventListener('click', event => {
       event.preventDefault()
 
-      let num = document.getElementById("num").value
-      let divisor = document.getElementById("divisor").value
-      console.log(num)
-      console.log(divisor)
-
-
       // Modulus Function
       const modulo = (a, b) => {
         let remainder
-        while (a >= b) {
-          a = a - b
-        }
-        remainder = a
 
-        document.getElementById("answer").textContent = `The Modulus is ${remainder}`
-        console.log(remainder)
+        if (b == 0) {
+          document.getElementById("answer").textContent = `You cannot divide by 0`
+        } else if (a < b && b != 0) {
+          document.getElementById("answer").textContent = `The answer is ${a}`
+        } else {
+          while (a >= b && b != 0) {
+            a = a - b
+          }
+          remainder = a
+          document.getElementById("answer").textContent = `The answer is ${remainder}`
+          console.log(remainder)
+        }
       }
 
-      modulo(num, divisor)
-
+      modulo(document.getElementById("num").value, document.getElementById("divisor").value)
     })
 
 
