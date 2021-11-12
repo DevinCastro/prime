@@ -30,8 +30,12 @@
   <h1 id="true"></h1>
 
 
+
+
+
   <script>
     // Write a function that performs modulo without using the built in modulo functions or operators and returns a float remainder.
+
     // Modulus Function
     const modulo = (a, b) => {
       let remainder
@@ -50,15 +54,11 @@
         return remainder
       }
     }
-
-    document.getElementById('mod').addEventListener('click', event => {
-      event.preventDefault()
-      modulo(document.getElementById("num").value, document.getElementById("divisor").value)
-    })
-
+     
+    // Determine if a number is prime
     const isPrime = x => {
       let isTrue = false
-
+      
       for (i = 2; i < x; i++) {
         if (x % i == 0) {
           isTrue = false
@@ -70,14 +70,18 @@
       document.getElementById('true').textContent = `${isTrue}`
       console.log(isTrue)
     }
+    
 
-    // Determine if a number is prime
     document.getElementById('isPrime').addEventListener('click', event => {
       event.preventDefault()
       console.log(document.getElementById('prime').value)
       isPrime(document.getElementById('prime').value)
     })
-
+    
+    document.getElementById('mod').addEventListener('click', event => {
+      event.preventDefault()
+      modulo(document.getElementById("num").value, document.getElementById("divisor").value)
+    })
 
   </script>
 </body>
