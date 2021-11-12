@@ -17,35 +17,65 @@
     <input id="divisor" type="text">
     <button id="mod">Submit</button>
   </form>
-
   <h1 id="answer"></h1>
+
+  <br><br>
+
+  <h1>Is this number prime</h1>
+  <form>
+    <label for="prime">Enter a Number</label>
+    <input id="prime" type="text">
+    <button id="isPrime">Submit</button>
+  </form>
+  <h1 id="true"></h1>
 
 
   <script>
     // Write a function that performs modulo without using the built in modulo functions or operators and returns a float remainder.
+    // Modulus Function
+    const modulo = (a, b) => {
+      let remainder
+
+      if (b == 0) {
+        document.getElementById("answer").textContent = `You cannot divide by 0`
+      } else if (a < b && b != 0) {
+        document.getElementById("answer").textContent = `The answer is ${a}`
+      } else {
+        while (a >= b && b != 0) {
+          a = a - b
+        }
+        remainder = a
+        document.getElementById("answer").textContent = `The answer is ${remainder}`
+        console.log(remainder)
+        return remainder
+      }
+    }
 
     document.getElementById('mod').addEventListener('click', event => {
       event.preventDefault()
+      modulo(document.getElementById("num").value, document.getElementById("divisor").value)
+    })
 
-      // Modulus Function
-      const modulo = (a, b) => {
-        let remainder
+    const isPrime = x => {
+      let isTrue = false
 
-        if (b == 0) {
-          document.getElementById("answer").textContent = `You cannot divide by 0`
-        } else if (a < b && b != 0) {
-          document.getElementById("answer").textContent = `The answer is ${a}`
+      for (i = 2; i < x; i++) {
+        if (x % i == 0) {
+          isTrue = false
+          break
         } else {
-          while (a >= b && b != 0) {
-            a = a - b
-          }
-          remainder = a
-          document.getElementById("answer").textContent = `The answer is ${remainder}`
-          console.log(remainder)
+          isTrue = true
         }
       }
+      document.getElementById('true').textContent = `${isTrue}`
+      console.log(isTrue)
+    }
 
-      modulo(document.getElementById("num").value, document.getElementById("divisor").value)
+    // Determine if a number is prime
+    document.getElementById('isPrime').addEventListener('click', event => {
+      event.preventDefault()
+      console.log(document.getElementById('prime').value)
+      isPrime(document.getElementById('prime').value)
     })
 
 
